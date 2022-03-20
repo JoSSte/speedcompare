@@ -9,7 +9,7 @@ import lombok.NonNull;
 @AllArgsConstructor
 public class Vehicle {
     @Getter
-    int speed;
+    int velocity;
     @Getter
     @NonNull
     Color color;
