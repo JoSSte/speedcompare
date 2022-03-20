@@ -1,6 +1,5 @@
 package dk.stumph.experiments.speedcomparator;
 
-import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -11,14 +10,13 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.transform.Rotate;
-import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
+
+import dk.stumph.experiments.speedcomparator.models.Vehicle;
 
 public class JavaFxApplication extends Application {
 
@@ -32,7 +30,6 @@ public class JavaFxApplication extends Application {
     public static final int Y_INTERVAL = 40;
     public static final Color STROKE = Color.BLACK;
     public static final Font FONT = Font.font("Abyssinica SIL", FontWeight.NORMAL, FontPosture.REGULAR, 20);
-
 
     @Override
     public void init() {
@@ -48,21 +45,26 @@ public class JavaFxApplication extends Application {
 
         Group root = new Group();
 
-        int[] items = {80,100,110,130};
+        Vehicle[] items = {
+                new Vehicle(80, Color.RED),
+                new Vehicle(100, Color.BLUE),
+                new Vehicle(110, Color.BLUEVIOLET),
+                new Vehicle(130, Color.GREEN)
+        };
         int offset = Y_OFFSET_INITIAL;
-        for (int item: items) {
+        for (Vehicle item : items) {
             Text text = new Text();
             text.setX(X_OFFSET);
             text.setY(offset);
             text.setFont(FONT);
-            text.setText(item + " km/h");
+            text.setText(item.getSpeed() + " km/h");
 
             Circle circle = new Circle(X_OFFSET, offset, circRadius);
-            circle.setFill(Color.RED);
+            circle.setFill(item.getColor());
             circle.setStroke(STROKE);
             // Instantiating TranslateTransition class
             TranslateTransition translate = new TranslateTransition();
-            translate.setByX(item * 10);
+            translate.setByX(item.getSpeed() * 10);
             translate.setDuration(Duration.millis(this.duration));
             translate.setCycleCount(stageWidth);
             translate.setNode(circle);
@@ -70,7 +72,6 @@ public class JavaFxApplication extends Application {
             root.getChildren().addAll(circle, text);
             offset += Y_INTERVAL;
         }
-        
 
         Scene scene = new Scene(root, this.stageWidth, stageHeight, Color.ALICEBLUE);
         primaryStage.setScene(scene);
