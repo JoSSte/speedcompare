@@ -48,86 +48,33 @@ public class JavaFxApplication extends Application {
 
         Group root = new Group();
 
-        Text text130 = new Text();
-        text130.setX(X_OFFSET);
-        text130.setY(40);
-        text130.setFont(FONT);
-        text130.setText("130 km/h");
+        int[] items = {80,100,110,130};
+        int offset = Y_OFFSET_INITIAL;
+        for (int item: items) {
+            Text text = new Text();
+            text.setX(X_OFFSET);
+            text.setY(offset);
+            text.setFont(FONT);
+            text.setText(item + " km/h");
 
-        Circle cir130 = new Circle(X_OFFSET, 40, circRadius);
-        cir130.setFill(Color.RED);
-        cir130.setStroke(STROKE);
-
-        Text text110 = new Text();
-        text110.setX(X_OFFSET);
-        text110.setY(80);
-        text110.setFont(FONT);
-        text110.setText("110 km/h");
-
-        Circle cir110 = new Circle(X_OFFSET, 80, circRadius);
-        cir110.setFill(Color.BLUE);
-        cir110.setStroke(STROKE);
-
-        Text text100 = new Text();
-        text100.setX(X_OFFSET);
-        text100.setY(120);
-        text100.setFont(FONT);
-        text100.setText("100 km/h");
-
-        Circle cir100 = new Circle(X_OFFSET, 120, circRadius);
-        cir100.setFill(Color.LIGHTBLUE);
-        cir100.setStroke(STROKE);
-
+            Circle circle = new Circle(X_OFFSET, offset, circRadius);
+            circle.setFill(Color.RED);
+            circle.setStroke(STROKE);
+            // Instantiating TranslateTransition class
+            TranslateTransition translate = new TranslateTransition();
+            translate.setByX(item * 10);
+            translate.setDuration(Duration.millis(this.duration));
+            translate.setCycleCount(stageWidth);
+            translate.setNode(circle);
+            translate.play();
+            root.getChildren().addAll(circle, text);
+            offset += Y_INTERVAL;
+        }
         
-        Text text80 = new Text();
-        text80.setX(X_OFFSET);
-        text80.setY(160);
-        text80.setFont(FONT);
-        text80.setText("80 km/h");
 
-        Circle cir80 = new Circle(X_OFFSET, 160, circRadius);
-        cir80.setFill(Color.GREEN);
-        cir80.setStroke(STROKE);
-
-        // Instantiating TranslateTransition class
-        TranslateTransition translate800 = new TranslateTransition();
-        int t80 = 800;
-        translate800.setByX(t80);
-        translate800.setDuration(Duration.millis(this.duration));
-        translate800.setCycleCount(stageWidth);
-        translate800.setNode(cir80);
-        translate800.play();
-
-        // Instantiating TranslateTransition class
-        TranslateTransition translate1000 = new TranslateTransition();
-        int t100 = 1000;
-        translate1000.setByX(t100);
-        translate1000.setDuration(Duration.millis(this.duration));
-        translate1000.setCycleCount(stageWidth);
-        translate1000.setNode(cir100);
-        translate1000.play();
-
-        // Instantiating TranslateTransition class
-        TranslateTransition translate1100 = new TranslateTransition();
-        int t110 = 1100;
-        translate1100.setByX(t110);
-        translate1100.setDuration(Duration.millis(this.duration));
-        translate1100.setCycleCount(stageWidth);
-        translate1100.setNode(cir110);
-        translate1100.play();
-
-        // Instantiating TranslateTransition class
-        TranslateTransition translate1300 = new TranslateTransition();
-        int t130 = 1300;
-        translate1300.setByX(t130);
-        translate1300.setDuration(Duration.millis(this.duration));
-        translate1300.setCycleCount(stageWidth);
-        translate1300.setNode(cir130);
-        translate1300.play();
-        root.getChildren().addAll(cir80, cir110, cir130, cir100, text100, text130, text110, text80);
         Scene scene = new Scene(root, this.stageWidth, stageHeight, Color.ALICEBLUE);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Translate Transition example");
+        primaryStage.setTitle("Speed Comparator");
         primaryStage.show();
 
     }
