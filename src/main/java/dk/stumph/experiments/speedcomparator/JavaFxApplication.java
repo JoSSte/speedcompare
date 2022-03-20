@@ -28,7 +28,10 @@ public class JavaFxApplication extends Application {
     private int circRadius = 20;
     private int duration = 5000;
     public static final int X_OFFSET = 50;
+    public static final int Y_OFFSET_INITIAL = 40;
+    public static final int Y_INTERVAL = 40;
     public static final Color STROKE = Color.BLACK;
+    public static final Font FONT = Font.font("Abyssinica SIL", FontWeight.NORMAL, FontPosture.REGULAR, 20);
 
 
     @Override
@@ -43,10 +46,12 @@ public class JavaFxApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        Group root = new Group();
+
         Text text130 = new Text();
         text130.setX(X_OFFSET);
         text130.setY(40);
-        text130.setFont(Font.font("Abyssinica SIL", FontWeight.NORMAL, FontPosture.REGULAR, 20));
+        text130.setFont(FONT);
         text130.setText("130 km/h");
 
         Circle cir130 = new Circle(X_OFFSET, 40, circRadius);
@@ -56,7 +61,7 @@ public class JavaFxApplication extends Application {
         Text text110 = new Text();
         text110.setX(X_OFFSET);
         text110.setY(80);
-        text110.setFont(Font.font("Abyssinica SIL", FontWeight.NORMAL, FontPosture.REGULAR, 20));
+        text110.setFont(FONT);
         text110.setText("110 km/h");
 
         Circle cir110 = new Circle(X_OFFSET, 80, circRadius);
@@ -66,7 +71,7 @@ public class JavaFxApplication extends Application {
         Text text100 = new Text();
         text100.setX(X_OFFSET);
         text100.setY(120);
-        text100.setFont(Font.font("Abyssinica SIL", FontWeight.NORMAL, FontPosture.REGULAR, 20));
+        text100.setFont(FONT);
         text100.setText("100 km/h");
 
         Circle cir100 = new Circle(X_OFFSET, 120, circRadius);
@@ -77,7 +82,7 @@ public class JavaFxApplication extends Application {
         Text text80 = new Text();
         text80.setX(X_OFFSET);
         text80.setY(160);
-        text80.setFont(Font.font("Abyssinica SIL", FontWeight.NORMAL, FontPosture.REGULAR, 20));
+        text80.setFont(FONT);
         text80.setText("80 km/h");
 
         Circle cir80 = new Circle(X_OFFSET, 160, circRadius);
@@ -119,9 +124,6 @@ public class JavaFxApplication extends Application {
         translate1300.setCycleCount(stageWidth);
         translate1300.setNode(cir130);
         translate1300.play();
-
-        // Configuring Group and Scene
-        Group root = new Group();
         root.getChildren().addAll(cir80, cir110, cir130, cir100, text100, text130, text110, text80);
         Scene scene = new Scene(root, this.stageWidth, stageHeight, Color.ALICEBLUE);
         primaryStage.setScene(scene);
