@@ -6,3 +6,4 @@ JavaFX is used for animations
 * https://www.vojtechruzicka.com/javafx-spring-boot/
 * https://openjfx.io/javadoc/18/javafx.graphics/javafx/application/Application.html
 * https://start.spring.io/
+* https://www.javatpoint.com/javafx-translate-transition 
