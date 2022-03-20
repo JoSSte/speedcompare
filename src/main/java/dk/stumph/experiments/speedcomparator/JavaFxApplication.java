@@ -1,10 +1,13 @@
 package dk.stumph.experiments.speedcomparator;
 
+import java.net.URL;
 import java.text.NumberFormat;
 
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -48,7 +51,11 @@ public class JavaFxApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Group root = new Group();
+        //Group root = new Group();
+        FXMLLoader loader = new FXMLLoader();
+        URL xmlUrl = getClass().getResource("/scene.fxml");
+        loader.setLocation(xmlUrl);
+        Group root = loader.load();
 
         Vehicle[] items = {
                 new Vehicle(80, Color.RED),

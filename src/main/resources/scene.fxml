@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    https://www.vojtechruzicka.com/javafx-fxml-scene-builder/
+ -->
+
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+
+<Group xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.stumph.experiments.speedcomparator.JavaFxController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+             <!-- <Label fx:id="mainTitle" text="Speed Comparator"/> -->
+             <Label fx:id="subTitle" text="Velocity Comparator Application" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+             <Button fx:id="mainButton" onAction="#buttonClicked" text="Click me!" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</Group>
