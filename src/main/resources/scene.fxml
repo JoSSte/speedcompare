@@ -9,23 +9,42 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 
-<Group xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.stumph.experiments.speedcomparator.JavaFxController">
-   <children>
-      <BorderPane prefHeight="200.0" prefWidth="200.0">
-         <top>
-             <!-- <Label fx:id="mainTitle" text="Speed Comparator"/> -->
-             <Label fx:id="subTitle" text="Velocity Comparator Application" textAlignment="CENTER" BorderPane.alignment="CENTER" />
-         </top>
-         <bottom>
-             <Button fx:id="mainButton" onAction="#buttonClicked" text="Click me!" BorderPane.alignment="CENTER" />
-         </bottom>
-         <center>
-            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-         </center>
-      </BorderPane>
-   </children>
-</Group>
+<BorderPane prefHeight="500.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.stumph.experiments.speedcomparator.JavaFxController">
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: Silver;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="mainButton" onAction="#buttonClicked" text="Click me!" />
+            <!-- <Label fx:id="mainTitle" text="Speed Comparator"/> -->
+            <Label fx:id="subTitle" layoutX="177.0" layoutY="5.0" style="-fx-background-color: Silver;" text="Velocity Comparator Application" textAlignment="CENTER" />
+         </children>
+      </Pane>
+   </bottom>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" onAction="#closeMenuItemClicked" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

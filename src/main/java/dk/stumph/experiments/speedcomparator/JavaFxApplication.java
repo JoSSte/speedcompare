@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -27,14 +28,14 @@ public class JavaFxApplication extends Application {
 
     private ConfigurableApplicationContext applicationContext;
     private int stageWidth = 1200;
-    private int stageHeight = 500;
+    //private int stageHeight = 500;
     private int circRadius = 20;
     private int duration = 5000;
 
     public static final int BASE_VELOCITY = 130;
 
     public static final int X_OFFSET = 50;
-    public static final int Y_OFFSET_INITIAL = 40;
+    public static final int Y_OFFSET_INITIAL = 60;
     public static final int Y_INTERVAL = 40;
     public static final Color STROKE = Color.BLACK;
     public static final Font FONT = Font.font("Abyssinica SIL", FontWeight.NORMAL, FontPosture.REGULAR, 20);
@@ -55,7 +56,7 @@ public class JavaFxApplication extends Application {
         FXMLLoader loader = new FXMLLoader();
         URL xmlUrl = getClass().getResource("/scene.fxml");
         loader.setLocation(xmlUrl);
-        Group root = loader.load();
+        BorderPane root = loader.load();
 
         Vehicle[] items = {
                 new Vehicle(80, Color.RED),
@@ -86,7 +87,7 @@ public class JavaFxApplication extends Application {
             offset += Y_INTERVAL;
         }
 
-        Scene scene = new Scene(root, this.stageWidth, stageHeight, Color.ALICEBLUE);
+        Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Speed Comparator");
         primaryStage.show();
